@@ -12,7 +12,7 @@ public:
         Node() : value(0) {}
     };
     vector<Node> body;
-    SNM(int siz) : body(size) {}
+    SNM(int siz) : body(siz) {}
     SNM(vector<int> values) : body(values.size()) {
         for (int i = 0; i < values.size(); ++i) {
             body[i].value = values[i];
