@@ -2,9 +2,9 @@
 
 ### data_structures
 - segment_tree
--- segment_tree_add_on_segment.cpp
--- segment_tree_sum.cpp
--- template_segment_tree_sum.cpp
+  - segment_tree_add_on_segment.cpp
+  - segment_tree_sum.cpp
+  - template_segment_tree_sum.cpp
 - FenwickTree.cpp
 - SNM.cpp
 - sparse_table_max.cpp
