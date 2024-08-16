@@ -10,6 +10,8 @@
 - sparse_table_max.cpp
 
 ### graphs
+- flows
+  - edmonds_karp.cpp
 - dijkstra.cpp
 - ford-bellman.cpp
 
