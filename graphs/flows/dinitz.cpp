@@ -30,7 +30,7 @@ namespace TFlows {
         void InsertEdgeLocal_(int start, int finish, TFlow capacity) {
             next_.push_back(begin_[start]);
             begin_[start] = edges_.size();
-            edges_.push_back(Edge(start, finish, capacity, 0));
+            edges_.push_back(Edge(start, finish, capacity, TFlow(0)));
         }
 
     public:
@@ -113,61 +113,82 @@ namespace TFlows {
     };
 
 
+}
+
+namespace DinitzAlgoritm {
+    using namespace TFlows;
+    #define iterator typename Network<TFlow>::EdgeIterator
     template<typename TFlow>
-    TFlow FordFulkerson(Network<TFlow>& network) {
-        int VerticesNomber = network.GetVerticesNomber();
+    TFlow dfs(Network<TFlow>& network, int ver, TFlow val_of_flow, const vector<int>& dist, vector<iterator>& its) {
+        if (ver == network.GetSink()) {
+            return val_of_flow;
+        }
+        TFlow su(0);
+        for (; its[ver].valid(); its[ver].next()) {
+            if ((its[ver].getResidualCapacity() > 0) && (dist[ver] + 1 == dist[its[ver].getFinish()])) {
+                TFlow ans = dfs(network, its[ver].getFinish(), min(val_of_flow - su, its[ver].getResidualCapacity()), dist, its);
+                su += ans;
+                if (ans > 0) its[ver].pushFlow(ans);
+                if (su == val_of_flow) {
+                    return su;
+                }
+            }
+        }
+        return su;
+    }
+
+    template<typename TFlow>
+    TFlow OneIterationDinitz(Network<TFlow>& network) {
         int source = network.GetSource();
         int sink = network.GetSink();
-        vector<typename Network<TFlow>::EdgeIterator> LastVertices(VerticesNomber, typename Network<TFlow>::EdgeIterator(network));
-        vector<bool> used(VerticesNomber, false), accessible(VerticesNomber, false);
+        int verties_nomber = network.GetVerticesNomber();
+        vector<int> dist(verties_nomber, -1);
+        vector<iterator> its(verties_nomber, iterator(network));
+        for (int ver = 0; ver < verties_nomber; ++ver) {
+            its[ver] = iterator(network, ver);
+        }
         deque<int> d;
         d.push_back(source);
-        accessible[source] = true;
+        dist[source] = 0;
+        TFlow start_value(0);
         while (!d.empty()) {
             int ver = *d.begin();
             d.pop_front();
-            if (!used[ver]) {
-                used[ver] = true;
-                for (auto it = network.begin(ver); it.valid(); it.next()) {
-                    if ((!accessible[it.getFinish()]) && (it.getResidualCapacity() > TFlow(0))) {
+            for (iterator it(network, ver); it.valid(); it.next()) {
+                if (it.getResidualCapacity() > 0) {
+                    if (ver == source) {
+                        start_value += it.getResidualCapacity();
+                    }
+                    if (dist[it.getFinish()] == -1) {
+                        dist[it.getFinish()] = dist[ver] + 1;
                         d.push_back(it.getFinish());
-                        accessible[it.getFinish()] = true;
-                        LastVertices[it.getFinish()] = it;
                     }
                 }
             }
         }
-        if (used[sink]) {
-            TFlow ans = LastVertices[sink].getResidualCapacity();
-            int ver = sink;
-            while (ver != source) {
-                ans = min(ans, LastVertices[ver].getResidualCapacity());
-                ver = LastVertices[ver].getStart();
-            }
-            ver = sink;
-            while (ver != source) {
-                LastVertices[ver].pushFlow(ans);
-                ver = LastVertices[ver].getStart();
+        TFlow ans(0);
+        if (dist[sink] == -1) {
+            return TFlow(0);
+        } else {
+            TFlow z(0);
+            while ((z = dfs(network, source, start_value, dist, its)) != TFlow(0)) {
+                ans += z;
             }
             return ans;
-        } else {
-            return 0;
         }
     }
-
     template<typename TFlow>
-    TFlow EdmondsKarp(Network<TFlow>& network) {
-        TFlow ans = 0;
-        while (true) {
-            TFlow new_flow = FordFulkerson(network);
-            if (new_flow == TFlow(0)) break;
-            else ans += new_flow;
+    TFlow Dinitz(Network<TFlow>& network) {
+        TFlow ans(0);
+        TFlow z(0);
+        while ((z = OneIterationDinitz(network)) != TFlow(0)) {
+            ans += z;
         }
         return ans;
     }
 }
 
-using namespace TFlows;
 
 int main() {
+
 }
