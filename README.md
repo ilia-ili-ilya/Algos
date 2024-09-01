@@ -11,6 +11,7 @@
 
 ### graphs
 - flows
+  - dinitz.cpp
   - edmonds_karp.cpp
 - dijkstra.cpp
 - ford-bellman.cpp
