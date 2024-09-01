@@ -8,7 +8,9 @@ private:
     int* t;
     int sz;
 public:
-    FenwickTree(int n) : t(new int[n+1]), sz(n) {}
+    FenwickTree(int n) : t(new int[n+1]), sz(n) {
+		for (int i = 0; i <= n; ++i) t[i] = 0;	
+	}
     FenwickTree(const vector<int>& a) : t(new int[a.size() + 1]), sz(a.size()) {
         for (int i = 1; i <= a.size(); ++i) {
             Add(i, a[i-1]);
