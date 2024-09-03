@@ -6,15 +6,18 @@
   - segment_tree_sum.cpp
   - template_segment_tree_sum.cpp
 - FenwickTree.cpp
-- SNM.cpp
+- DSU.cpp
 - sparse_table_max.cpp
 
 ### graphs
 - flows
   - dinitz.cpp
   - edmonds_karp.cpp
-- dijkstra.cpp
-- ford-bellman.cpp
+- shortest_paths
+  - dijkstra.cpp
+  - floyd.cpp
+  - ford-bellman.cpp
+  - johnson.cpp
 
 ### math
 - fft.cpp
