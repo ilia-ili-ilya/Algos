@@ -13,12 +13,16 @@
 - flows
   - dinitz.cpp
   - edmonds_karp.cpp
+  - relabe_to_front.cpp
 - shortest_paths
   - dijkstra.cpp
   - floyd.cpp
   - ford-bellman.cpp
   - johnson.cpp
-
+- minimum_spanning_tree
+  - kruskal.cpp
+  - prim.cpp
+  
 ### math
 - fft.cpp
 - fft_998244353.cpp
