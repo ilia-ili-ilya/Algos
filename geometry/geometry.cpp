@@ -1,3 +1,13 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define int long long
+#define endl '\n'
+
+
+int INF = 1e18;
+mt19937 rnd(179);
 namespace Geometry {
     long double const eps = 0.0000001;
     long double const Pi = acosl(-1);
@@ -28,7 +38,7 @@ namespace Geometry {
     struct p {
         T x = 0;
         T y = 0;
-        
+
         p() = default;
 
         p(T x, T y) : x(x), y(y) {}
@@ -224,49 +234,75 @@ namespace Geometry {
             return *this;
         }
     };
-//
-//    template<typename T, typename U>
-//    p<long double> Project(const p<T>& a, const Line<U>& line) {
-//        // TODO
-//    }
-//
-//    template<typename T, typename U>
-//    p<long double> Project(const p<T>& a, const Ray<U>& ray) {
-//        return Project(a, Line(ray));
-//    }
-//
-//    template<typename T, typename U>
-//    p<long double> Project(const p<T>& a, const Seg<U>& seg) {
-//        return Project(a, Line(seg));
-//    }
-//
-//    template<typename T, typename U>
-//    bool Belong(const p<T>& a, const Line<U>& line) {
-//        // TODO
-//    }
-//
-//    template<typename T, typename U>
-//    bool Belong(const p<T>& a, const Ray<U>& ray) {
-//        // TODO
-//    }
-//
-//    template<typename T, typename U>
-//    bool Belong(const p<T>& a, const Seg<U>& seg) {
-//        // TODO
-//    }
-//
-//    template<typename T>
-//    bool DoIntersect(const p<T>& a, const Line<U>& line) {
-//        // TODO
-//    }
-//
-//    template<typename T, typename U>
-//    bool DoIntersect(const p<T>& a, const Ray<U>& ray) {
-//        // TODO
-//    }
-//
-//    template<typename T, typename U>
-//    bool DoIntersect(const p<T>& a, const Seg<U>& seg) {
-//        // TODO
-//    }
+
+    template<typename T, typename U>
+    p<long double> Project(const p<T>& a, const Line<U>& line) {
+
+        // TODO
+    }
+
+    template<typename T, typename U>
+    p<long double> Project(const p<T>& a, const Ray<U>& ray) {
+        return Project(a, Line(ray));
+    }
+
+    template<typename T, typename U>
+    p<long double> Project(const p<T>& a, const Seg<U>& seg) {
+        return Project(a, Line(seg));
+    }
+
+    template<typename T, typename U>
+    bool Belong(const p<T>& a, const Line<U>& line) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    bool Belong(const p<T>& a, const Ray<U>& ray) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    bool Belong(const p<T>& a, const Seg<U>& seg) {
+        // TODO
+    }
+
+    template<typename T>
+    bool DoIntersect(const p<T>& a, const Line<U>& line) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    bool DoIntersect(const p<T>& a, const Ray<U>& ray) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    bool DoIntersect(const p<T>& a, const Seg<U>& seg) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    long double Dist(const p<T>& a, const Line<U>& line) {
+
+    }
+
+    template<typename T, typename U>
+    long double Dist(const p<T>& a, const Ray<U>& ray) {
+        // TODO
+    }
+
+    template<typename T, typename U>
+    long double Dist(const p<T>& a, const Seg<U>& seg) {
+        // TODO
+    }
 }
+
+using namespace Geometry;
+
+int32_t main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    cout.precision(20);
+}
+
