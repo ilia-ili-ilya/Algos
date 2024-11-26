@@ -39,7 +39,6 @@ const int inf = 1000000000, INF = inf*inf;
 mt19937 rnd(179);
 
 int Bit(int mask, int b) { return (mask >> b) & 1; }
-bool isin(auto a, auto x) {return (a.find(x) != a.end());}
 int gcd(int a, int b) {if (a < b) swap(a, b);if (b == 0) return a;return gcd(b, a % b);}
 
 
