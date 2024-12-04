@@ -27,5 +27,7 @@
 - fft.cpp
 - fft_998244353.cpp
 ### strings
+- aho-corasick.cpp
+- bor.cpp
 - prefix_function.cpp
 - z.cpp
