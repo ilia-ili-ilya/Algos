@@ -26,4 +26,6 @@
 ### math
 - fft.cpp
 - fft_998244353.cpp
-
+### strings
+- prefix_function.cpp
+- z.cpp
